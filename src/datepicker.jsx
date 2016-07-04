@@ -87,7 +87,8 @@ var DatePicker = React.createClass({
 
   handleBlur (event) {
     if (this.state.open) {
-      this.refs.input.focus()
+      // Fix For Firefox so it doesn't lose focus on select and triggers onBlur correctly
+      setTimeout(() => this.refs.input.focus(), 10)
     } else {
       this.props.onBlur(event)
     }
